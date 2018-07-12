@@ -1,0 +1,27 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "一个博客",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "dev": "vuepress dev docs",
+    "build": "vuepress build docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/binyu717/blog.git"
+  },
+  "keywords": [
+    "vue",
+    "blog"
+  ],
+  "author": "Yu Bin\u001b[D\u001b[D\u001b[\u001b[\u001b[\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/binyu717/blog/issues"
+  },
+  "homepage": "https://github.com/binyu717/blog#readme"
+}
