@@ -13,5 +13,5 @@ git commit -m 'deploy'
 echo git commit finished
 
 echo git commit deploy
-git push -f https://github.com/qq986063761/blog.git master:gh-pages
+git push -f https://github.com/binyu717/blog.git master:gh-pages
 echo git commit finished
