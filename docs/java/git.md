@@ -75,3 +75,4 @@ $ git checkout dev
 穿梭前，用git log可以查看提交历史，以便确定要回退到哪个版本。 
     git log --pretty=oneline简约版   
 要重返未来，用git reflog查看命令历史，以便确定要回到未来的哪个版本。
+
