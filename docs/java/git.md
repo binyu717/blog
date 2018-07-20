@@ -68,7 +68,13 @@ $ git checkout dev
     >$ git stash clear
 - 从堆栈中删除最新的stash,同样可以指定 stash ID 
     >$ git stash drop
-
+## 远程仓库
+- 更换远程仓库地址，URL为新地址
+    >git remote set-url origin URL
+- 删除现有远程仓库 
+    >git remote rm origin
+- 添加新远程仓库
+    >git remote add origin url
  ## 项目实践
 >HEAD指向的版本就是当前版本，因此，Git允许我们在版本的历史之间穿梭，使用命令   
     git reset --hard commit_id。   
