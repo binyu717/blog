@@ -76,9 +76,43 @@ $ git checkout dev
 - 添加新远程仓库
     >git remote add origin url
  ## 项目实践
+ - 版本切换
 >HEAD指向的版本就是当前版本，因此，Git允许我们在版本的历史之间穿梭，使用命令   
     git reset --hard commit_id。   
 穿梭前，用git log可以查看提交历史，以便确定要回退到哪个版本。 
     git log --pretty=oneline简约版   
 要重返未来，用git reflog查看命令历史，以便确定要回到未来的哪个版本。
+
+- 撤销更改
+    - 已修改，未暂存  ： 
+        查看工作区与暂存区之间的差异   
+        > git diff     
+
+        撤销操作：
+        > git checkout . 或者git reset --hard   
+        
+    - 已暂存，未提交  
+        查看暂存区和本地仓库之间的差异 ：
+        > git diff --cached  
+
+        撤销操作：
+        >git reset   修改退回到了git add .之前的状态   
+        >git checkout .  
+        
+        或者
+        >git reset --hard
+
+    - 已提交，未推送   
+        本地仓库与远程仓库的差异:
+        >git diff master origin/master   
+
+        撤销操作：
+        >git reset --hard origin/master
+    - 已推送   
+     撤销操作：需要先恢复本地仓库，再强制push到远程仓库
+       > git reset --hard HEAD^   
+       > git push -f
+
+
+        
 

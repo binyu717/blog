@@ -1,3 +1,9 @@
+
+echo.build
+npm run build
+echo build finished
+pause
+
 cd docs/.vuepress/dist
 
 echo git init start
