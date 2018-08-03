@@ -29,15 +29,21 @@
     latest是一个标签（tag），表示是当前最新版本
 - 查看你自己的本地镜像
     > docker images  等同于 docker image ls
+    - 格式化镜像结果列表，并且只包含镜像ID和仓库名
+    > docker image ls --format "{{.ID}}: {{.Repository}}"   
+    > eg:"table {{.ID}}\t{{.Repository}}\t{{.Tag}}" ...
 - 查看镜像、容器、数据卷所占用的空间。
+- 删除本地的镜像
+> docker image rm [选项] <镜像1> [<镜像2> ...]   
     > docker system df
+- commit
 - 查看所有容器：
     >docker ps -a
 - 查看当前正在运行的容器：
     >docker ps
 - 运行容器，以tomcat为例
-    - 以后台守护进程的方式启动
-    >docker run -d tomcat:latest
+    - 以后台守护进程的方式启动 [可选]
+    >docker run [--name containName] -d tomcat:latest
     - 以交互的方式运行,-it：这是两个参数，一个是 -i：交互式操作，一个是 -t 终端,--rm：这个参数是说容器退出后随之将其删除。默认情况下，为了排障需求，退出的容器并不会立即删除，除非手动 docker rm,指定容器和主机的映射端口(前一个8080是指我们访问tomcat时的端口号，后一个8080是tomcat启动的一个容器在docker中运行的端口号)
     >docker run -it -rm -p 8081:8080 tomcat:latest /bin/bash   
 - 启动、停止、重启、删除容器的命令
@@ -46,6 +52,9 @@
     >docker restart container_name/container_id  
     >docker rm container_name/container_id
 - 进入容器 
+    >  docker exec -it container_name/container_id bash
     > docker exec -it container_name/container_id /bin/bash 
 - 复制文件到容器中
-    >docker cp src_path container:dest_path
+    > docker cp src_path container:dest_path
+- 保存镜像
+    > docker commit [选项] <容器ID或容器名> [<仓库名>[:<标签>]]
