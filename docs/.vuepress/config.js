@@ -33,24 +33,24 @@ module.exports = {
 		// 	children: [
 		// 		['/spring/springBase', 'spring基础'],
 		// 	]
-		// },{
-		// 	title: 'mybatis',
-		// 	collapsable: true,
-		// 	children: [
-		// 		['/mybatis/mybatisBase', '基础'],
-		// 	]
+		},{
+			title: 'mybatis',
+			collapsable: true,
+			children: [
+				['/mybatis/mybatisBase', '基础'],
+			]
 		// },{
 		// 	title: 'linux',
 		// 	collapsable: false,
 		// 	children: [
 		// 		['/linux/linuxBase', '基础'],
 		// 	]
-		// },{
-		// 	title: 'tomcat',
-		// 	collapsable: false,
-		// 	children: [
-		// 		['/tomcat/tomcatBase', '基础'],
-		// 	]
+		},{
+			title: 'tomcat',
+			collapsable: false,
+			children: [
+				['/tomcat/tomcatBase', '基础'],
+			]
 		// },{
 		// 	title: '开发工具',
 		// 	collapsable: false,
@@ -63,12 +63,12 @@ module.exports = {
 		// 	children: [
 		// 		['/network/networkBase', '基础'],
 		// 	]
-		// },{
-		// 	title: '面试',
-		// 	collapsable: false,
-		// 	children: [
-		// 		['/interview/point', '知识点'],
-		// 	]
+		},{
+			title: 'docker',
+			collapsable: false,
+			children: [
+				['/docker/docker', '基本命令'],
+			]
 			},{
 		title: '日常',
 		collapsable: true,

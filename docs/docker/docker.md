@@ -1,8 +1,8 @@
 ## 参考
-[Docker — 从入门到实践](https://yeasy.gitbooks.io/docker_practice/content/)
+[Docker — 从入门到实践](https://yeasy.gitbooks.io/docker_practice/content/)   
 ## 安装docker
 ### Docker 分为 CE 和 EE 两大版本。CE 即社区版（免费，支持周期 7 个月），EE 即企业版，强调安全，付费使用，支持周期 24 个月。
--  Ubuntu 操作系统
+- Ubuntu 操作系统
 - 使用 APT 安装
     > $ sudo apt-get update   
     > $ sudo apt-get install docker-ce
@@ -17,7 +17,7 @@
         > $ sudo groupadd docker
     - 将当前用户加入 docker 组：
         > $ sudo usermod -aG docker $USER
--
+
 ## 基本命令
 - 查看docker版本
     >docker version   
@@ -29,9 +29,6 @@
     latest是一个标签（tag），表示是当前最新版本
 - 查看你自己的本地镜像
     > docker images  等同于 docker image ls
-    - 格式化镜像结果列表，并且只包含镜像ID和仓库名
-    > docker image ls --format "{{.ID}}: {{.Repository}}"   
-    > eg:"table {{.ID}}\t{{.Repository}}\t{{.Tag}}" ...
 - 查看镜像、容器、数据卷所占用的空间。
 - 删除本地的镜像
 > docker image rm [选项] <镜像1> [<镜像2> ...]   
