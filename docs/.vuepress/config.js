@@ -18,7 +18,8 @@ module.exports = {
 				['/java/javaBase', 'java基础'],
 				['/java/arithmetic', '算法'],
 				['/java/experience', '历程'],
-				['/java/git', 'git学习']
+				['/java/git', 'git学习'],
+				['/java/websocket', 'websocket']
 			]
 			
 		// },{
@@ -57,12 +58,12 @@ module.exports = {
 		// 	children: [
 		// 		['/ide/ideBase', '基础'],
 		// 	]
-		// },{
-		// 	title: '网络技术',
-		// 	collapsable: false,
-		// 	children: [
-		// 		['/network/networkBase', '基础'],
-		// 	]
+		},{
+			title: '网络技术',
+			collapsable: false,
+			children: [
+				['/network/networkBase', '基础'],
+			]
 		},{
 			title: 'docker',
 			collapsable: false,

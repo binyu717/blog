@@ -42,7 +42,7 @@
     - 以后台守护进程的方式启动 [可选]
     >docker run [--name containName] -d tomcat:latest
     - 以交互的方式运行,-it：这是两个参数，一个是 -i：交互式操作，一个是 -t 终端,--rm：这个参数是说容器退出后随之将其删除。默认情况下，为了排障需求，退出的容器并不会立即删除，除非手动 docker rm,指定容器和主机的映射端口(前一个8080是指我们访问tomcat时的端口号，后一个8080是tomcat启动的一个容器在docker中运行的端口号)
-    >docker run -it -rm -p 8081:8080 tomcat:latest /bin/bash   
+    >docker run -it -rm -p 8080:8080 tomcat:latest /bin/bash   
 - 启动、停止、重启、删除容器的命令
     >docker start container_name/container_id      
     >docker stop container_name/container_id    
