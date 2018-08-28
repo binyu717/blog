@@ -60,9 +60,9 @@ public class HandshakeInterceptor extends HttpSessionHandshakeInterceptor {
 }
 ```
 ### 第二步 
-    - xml配置
-        - 如果web.xml是分开加载spring-context和spring-servlet的，则要把该配置放到spring-servlet上加载，否则报404。
-        - 但是在spring-context加载的时候，messageHandler是还没有初始化的，不能自动注入到类中，否则服务启动失败。
+- xml配置
+    - 如果web.xml是分开加载spring-context和spring-servlet的，则要把该配置放到spring-servlet上加载，否则报404。
+    - 但是在spring-context加载的时候，messageHandler是还没有初始化的，不能自动注入到类中，否则服务启动失败。
  __WebSocket 实质上借用 HTTP 请求进行握手，启用 Spring WebSocket 需要在 org.springframework.web.servlet.DispatcherServlet 里配置拦截此请求__
 ```xml
  <!--websocket配置-->
@@ -86,7 +86,7 @@ public class HandshakeInterceptor extends HttpSessionHandshakeInterceptor {
     </websocket:handlers>
 ```
 
-    - java配置
+- java配置
 ```java
     @Configuration
     @EnableWebMvc
@@ -110,3 +110,20 @@ public class HandshakeInterceptor extends HttpSessionHandshakeInterceptor {
         }
     }
 ```
+
+### question
+- 根据浏览器的保护规则，跨域的时候我们创建的sessionId是不会被浏览器保存下来的,因此在开发时前后联调的时候，因为sessionId的不同，会导致发送到其他client，我们可以构建一个拦截器，对需要跨域访问的request头部重写。   
+服务端：
+``` java
+public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+        HttpServletResponse response = (HttpServletResponse) servletResponse;
+        HttpServletRequest request=(HttpServletRequest)servletRequest;
+        response.setHeader("Access-Control-Allow-Origin", request.getHeader("Origin"));
+        response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
+        response.setHeader("Access-Control-Max-Age", "0");
+        response.setHeader("Access-Control-Allow-Headers", "Origin, No-Cache, X-Requested-With, If-Modified-Since, Pragma, Last-Modified, Cache-Control, Expires, Content-Type, X-E4M-With,userId,token");
+        response.setHeader("Access-Control-Allow-Credentials", "true");
+        response.setHeader("XDomainRequestAllowed","1");
+        }
+```
+客户端也要相应地在请求中增加参数withcredentials=true,crossDomain=true

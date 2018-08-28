@@ -23,5 +23,6 @@
   "bugs": {
     "url": "https://github.com/binyu717/blog/issues"
   },
-  "homepage": "https://github.com/binyu717/blog#readme"
+  "homepage": "https://github.com/binyu717/blog#readme",
+  "index":"https://binyu717.github.io/blog/"
 }
