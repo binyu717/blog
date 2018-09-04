@@ -5,6 +5,10 @@
       COALESCE()函数将会返回包括expression在内的所有参数中的第一个非空表达式。  
       如果所有的表达式都为空值，则返回NULL。
 
+- 显示mysql查询进程
+    > show processlist; 
+    > command列，显示当前连接的执行的命令，一般就是休眠（sleep），查询（query），连接（connect）。time列，此这个状态持续的时间，单位是秒。state列，显示使用当前连接的sql语句的状态
+- kill pid 
 ## json字段查询
 查询json 
 > json_contains 判断是否包含某个json值  
