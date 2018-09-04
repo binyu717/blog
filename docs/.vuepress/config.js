@@ -35,17 +35,19 @@ module.exports = {
 		// 		['/spring/springBase', 'spring基础'],
 		// 	]
 		},{
-			title: 'mybatis',
+			title: '框架',
 			collapsable: true,
 			children: [
-				['/mybatis/mybatisBase', '基础'],
+				['/framework/elasticsearch', 'elasticsearch'],
+				['/framework/mybatis', 'mybatis'],
+				['/framework/quartz', 'quartz'],
 			]
-		// },{
-		// 	title: 'linux',
-		// 	collapsable: false,
-		// 	children: [
-		// 		['/linux/linuxBase', '基础'],
-		// 	]
+		},{
+			title: 'linux',
+			collapsable: false,
+			children: [
+				['/linux/linuxBase', '基础'],
+			]
 		},{
 			title: 'tomcat',
 			collapsable: false,
