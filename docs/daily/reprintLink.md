@@ -6,3 +6,4 @@
 - [使用 Docker 搭建 Java Web 运行环境](https://mp.weixin.qq.com/s/N_EAb776No1ATBdL4XQg-A)
 ## GitHub
 [crossoverjie's blog](https://crossoverjie.top/categories/)
+[linux各软件安装教程](https://github.com/judasn/Linux-Tutorial/)
