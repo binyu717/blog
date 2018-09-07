@@ -1,4 +1,6 @@
 [官方文档](https://www.elastic.co/guide/cn/elasticsearch/guide/current/getting-started.html)
+[youmeek博客](http://www.youmeek.com/category/elasticsearch/)
+[参考blog](https://blog.csdn.net/ghost_leader/article/details/79023222)
 ## 基本知识
 - Cluster：集群，可以一个或多个节点，这些节点共同保存这个集群的数据。集群有一个名称，很重要，各个节点的配置就需要用到这个名称，节点是用集群名称加入到集群中的。
 - Node：节点，归属集群。如果整个集群就一个节点，那这个节点也就是这个集群本身。
@@ -24,6 +26,8 @@
     > ./bin/kibana  
 ## 操作
 - 查询集群健康状况：GET /_cat/health?v
+    - 默认集群名字：elasticsearch
+     集群颜色状态-绿色，最健康的状态，代表所有的分片包括备份都可用；黄色，基本的分片可用，但是备份不可用（也可能是没有备份）；红色，部分的分片可用，表明分片有一部分损坏。此时执行查询部分数据仍然可以查到，遇到这种情况，还是赶快解决比较好。
 - 查询集群中有哪些索引：GET /_cat/indices?v
 - 查询分片：GET /_cat/shards
 - 新增索引：PUT /user_index
@@ -47,50 +51,60 @@
             }
     ```
     - 设置type/document
-        - [字段类型传送门](https://blog.csdn.net/chengyuqiang/article/details/79048800)
+        - [字段类型传送门](https://www.elastic.co/guide/cn/elasticsearch/guide/current/mapping-intro.html)
         - 属性
-            - index：可选值为analyzed(默认)和no，如果是字段是字符串类型的，则可以是not_analyzed.
-            - store：可选值为yes或no，指定该字段的原始值是否被写入索引中，默认为no，即结果中不能返回该字段。
-            - boost：默认为1，定义了文档中该字段的重要性，越高越重要
-            - null_value：如果一个字段为null值(空数组或者数组都是null值)的话不会被索引及搜索到，null_value参数可以显示替代null values为指定值，这样使得字段可以被搜索到。
-            - include_in_all：指定该字段是否应该包括在_all字段里头，默认情况下都会包含。
+            - index：可选值为analyzed/no/not_analyzed，analyzed:首先分析字符串，然后索引它。换句话说，以全文索引这个域。
+              not_analyzed:索引这个域，所以它能够被搜索，但索引的是精确值。不会对它进行分析。no:不索引这个域。这个域不会被搜索到。
+              string 域 index 属性默认是 analyzed 。如果我们想映射这个字段为一个精确值，我们需要设置它为 not_analyzed ：
+             - boost：默认为1，定义了文档中该字段的重要性，越高越重要
+             - include_in_all：指定该字段是否应该包括在_all字段里头，默认情况下都会包含。
+            - 对于 analyzed 字符串域，用 analyzer 属性指定在搜索和索引时使用的分析器,默认使用 standard 分析器， 但你可以指定一个内置的分析器替代它。
     ```
-    "mappings": {
-        "user": {
-            "properties": {
-                "id": {
-                "type": "text",
-                "index": "not_analyzed"
-                },
-                "user_name": {
-                "type": "keyword",
-                "store": "no",
-                "term_vector": "with_positions_offsets",
-                "analyzer": "ik_max_word",
-                "search_analyzer": "ik_max_word",
-                "boost": 5
-                },
-                "user_desc": {
-                "type": "text",
-                "index": "not_analyzed"
-                },
-                "age": {
-                "type": "byte",
-                "index": "not_analyzed"
-                },
-                "created_time": {
-                "type": "date",
-                "index": "not_analyzed",
-                "format": "yyyy-MM-dd HH:mm:ss"
-                },
-                "update_time": {
-                "type": "date",
-                "index": "not_analyzed",
-                "format": "yyyy-MM-dd HH:mm:ss"
-                },
+    PUT /user_index
+    {
+        "settings":{
+            同上....
+        },
+       "mappings": {
+            "user": {
+                "properties": {
+                    "id": {
+                    "type": "text"
+                    },
+                    "user_name": {
+                    "type": "keyword",
+                    "boost": 5
+                    },
+                    "user_desc": {
+                    "type": "text"
+                    },
+                    "age": {
+                    "type": "byte"
+                    },
+                    "created_time": {
+                    "type": "date",
+                    "format": "yyyy-MM-dd HH:mm:ss"
+                    },
+                    "update_time": {
+                    "type": "date",
+                    "format": "yyyy-MM-dd HH:mm:ss"
+                    }
+                }
+            }
+         }
+    }
+    
+    ```
+- 在已有的mapping中增加域
+    ```
+    PUT /user_index/_mapping/user
+        {
+        "properties" : {
+            "introduce" : {
+            "type" :    "text"
             }
         }
-    }
+        }
     ```
 - 删除指定索引：DELETE /user_index
 - 删除指定多个索引：DELETE /user_index,db_index
