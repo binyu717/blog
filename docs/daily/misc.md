@@ -1,4 +1,3 @@
-# 知乎
 ## 在知乎上看到一个很有意思的问题，记录一下：
 ### 一副扑克牌中抽出13张从a到k然后把上面的一张抽出来放最低下,第二张是1拿出来摆桌上,再把最上面的一张抽出来放底下,第二张是2放桌上,以此类推把他们按照顺序都抽出来.怎么摆?
 ---
@@ -37,3 +36,20 @@
     }
  ```
 [知乎链接](https://zhuanlan.zhihu.com/p/38850888)
+
+## getResourceAsStream()了解一下
+### this.getClass().getResourceAsStream()
+    path 不以’/'开头时默认是从此类所在的包下取资源，以’/'开头则是从ClassPath根下获取。其只是通过path构造一个绝对路径，最终还是由ClassLoader获取资源。 
+### this.getClass().getClassLoader().getResourceAsStream()
+    默认则是从ClassPath根下获取，path不能以’/'开头，最终是由ClassLoader获取资源。 
+
+###  
+```java
+InputStream is = this.getClass().getResourceAsStream()
+Properties prop = new Properties(is);
+prop.load()
+// 这样就可以获取文件中的数据了
+prop.getProperty("key);
+
+```
+ClassPath根路径：war包下WEB-INF/目录；不过存放在resources目录下的文件都会打包到WEB-INF下的目录

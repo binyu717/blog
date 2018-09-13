@@ -12,7 +12,7 @@
 - Replica：副本。全称 replica shards（一般读操作可以被分配到进行使用）。Replica 主要用来保证高可用（故障转移）、数据备份、增强高吞吐的并行搜索。
 ## 安装
 - elasticsearch
-- kibana
+- kibana port:5601
     > 下载版本要和es保持一致，否则运行不起来；
     > 修改config/kibana.yml配置 server.host、elasticsearch.url ...
     > 运行 ./bin/kibana  
