@@ -55,3 +55,7 @@
     > docker cp src_path container:dest_path
 - 保存镜像
     > docker commit [选项] <容器ID或容器名> [<仓库名>[:<标签>]]
+- 实时查看docker容器日志
+    > docker logs -f --tail 行数 容器名  
+    -f : 查看实时日志  
+    -t : 查看日志产生的日期
