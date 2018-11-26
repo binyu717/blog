@@ -49,15 +49,15 @@
 ```
 ### http部分
 - 在server段外定义的配置，对所有server生效。
-- server_name    指定虚拟主机名。相当于httpd虚拟主机段中的ServerName
+- server_name    指定虚拟主机名。相当于httpd虚拟主机段中的ServerName   
     > 主机名可以通过精确主机名、左侧使用通配、右侧使用通配、正则表达式匹配来确定	
 - index index.html 首页   
 - root 指定页面文件根目录
 - listen 指定监听的地址、端口
-    > default_server 设置默认虚拟主机，即当没有虚拟主机符合请求时，使用默认虚拟主机响应
-    > rcvbuf=SIZE 接收缓冲区大小
-    > sndbuf=SIZE 发送缓冲区大小
-    > ssl 限制仅能通过ssl连接进行服务，即提供https服务。这时监听的端口应指定为443
+    > default_server 设置默认虚拟主机，即当没有虚拟主机符合请求时，使用默认虚拟主机响应   
+    > rcvbuf=SIZE 接收缓冲区大小   
+    > sndbuf=SIZE 发送缓冲区大小    
+    > ssl 限制仅能通过ssl连接进行服务，即提供https服务。这时监听的端口应指定为443     
 - location
     ```xml
         location = / {                        # 仅当URI为"/"时,使用
