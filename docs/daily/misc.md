@@ -64,3 +64,11 @@
     ```
 
 ## @Column 注解 
+
+## 跨域
+跨域：指的是浏览器不能执行其他网站的脚本。它是由浏览器的同源策略造成的，是浏览器对javascript施加的安全限制。
+同源策略：是指协议，域名，端口都要相同，其中有一个不同都会产生跨域；
+
+## @Transactional 踩坑
+- 默认的事务规则是遇到运行异常（RuntimeException）和程序错误（Error）才会回滚，在 @Transactional 注解中使用 rollbackFor 属性来指定异常。
+- tycatch掉异常，不会回滚

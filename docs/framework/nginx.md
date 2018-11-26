@@ -1,9 +1,9 @@
-# 打卡：每日学习:
 
-## 20181126：[【nginx】Nginx基本功能极速入门](https://mp.weixin.qq.com/s/h9sXZc4Y62f4KOSVXAB1Pg)
-### [nginx中文文档](http://www.nginx.cn/doc/)
-### 配置文件详解
-#### 文件大致结构：
+## 推荐
+ [nginx中文文档](http://www.nginx.cn/doc/)
+ [超详细 Nginx 极简教程](https://mp.weixin.qq.com/s/L32QRHYw9FiDJ41L0nGdTw)
+## 配置文件详解
+### 文件大致结构：
         ```xml
             【main部分】
 
@@ -22,7 +22,7 @@
         ｝
         ```
     - 
-#### main部分
+### main部分
 ```xml
     # 配置用户
     #user  nobody; 
@@ -30,25 +30,28 @@
     # 允许生成的进程数，默认为1
     worker_processes  1;
 
-    # 制定日志路径，级别，级别有debug|info|notice|warn|error|crit|alert|emerg
+    # 指定全局日志路径，级别，级别有debug|info|notice|warn|error|crit|alert|emerg
     #error_log  logs/error.log;
-    #error_log  logs/error.log  notice;
-    #error_log  logs/error.log  info;
+    #error_log  logs/notice.log  notice;
+    #error_log  logs/info.log  info;
 
-    # #指定nginx进程运行文件存放地址
+    # PID文件,指定nginx进程运行文件存放地址,记录当前启动的nginx的进程ID
     #pid        logs/nginx.pid;
 ```
-#### event部分
+### event部分
+
 ```xml
+    # 工作模式及连接数上限
     events {
      # 定义每个worker进程最大并发连接数
         worker_connections  1024;                      
     }
 ```
-#### http部分
+### http部分
 - 在server段外定义的配置，对所有server生效。
 - server_name    指定虚拟主机名。相当于httpd虚拟主机段中的ServerName
     > 主机名可以通过精确主机名、左侧使用通配、右侧使用通配、正则表达式匹配来确定	
+- index index.html 首页   
 - root 指定页面文件根目录
 - listen 指定监听的地址、端口
     > default_server 设置默认虚拟主机，即当没有虚拟主机符合请求时，使用默认虚拟主机响应
@@ -57,8 +60,9 @@
     > ssl 限制仅能通过ssl连接进行服务，即提供https服务。这时监听的端口应指定为443
 - location
     ```xml
-        location = / {                        # 仅当URI为"/"时，使用A配置
-             [ configuration A ]
+        location = / {                        # 仅当URI为"/"时,使用
+            root D:java/web;
+             expires 30d;                     # 过期30天，
         }
 
         location / {                          # URI为"/"下包含的路径时，使用B配置
@@ -73,10 +77,32 @@
             [ configuration D ]
         }
 
-        location ~* \.(gif|jpg|jpeg)$ {         # URI结尾是gif、jpg或jpeg时，使用E配置
+        location ~* \.(gif|jpg|jpeg)$ {      # URI结尾是gif、jpg或jpeg时，使用E配置
             [ configuration E ]
         }
+       location ~ /.ht {                     # 禁止访问 .htxxx 文件
+           deny all;
+       }
     ```
+- 错误处理页面（可选择性配置）
+```xml
+    #error_page   404              /404.html;
+    #error_page   500 502 503 504  /50x.html;
+    #location = /50x.html {
+    #    root   html;
+    #}
+```
+## 常用命令
+- nginx -s stop ：快速关闭Nginx，可能不保存相关信息，并迅速终止web服务。
+- nginx -s quit ：平稳关闭Nginx，保存相关信息，有安排的结束web服务。
+- nginx -s reload ：因改变了Nginx相关配置，需要重新加载配置而重载。
+- nginx -s reopen ：重新打开日志文件。 
+- nginx -c filename ：为 Nginx 指定一个配置文件，来代替缺省的。
+- nginx -t ：不运行，而仅仅测试配置文件。nginx 将检查配置文件的语法的正确性，并尝试打开配置文件中所引用到的文件。
+- nginx -v：显示 nginx 的版本。 
+- nginx -V：显示 nginx 的版本，编译器版本和配置参数。
+ 
+## 例子
 ### 静态HTTP服务器
 
     配置样例：
@@ -105,6 +131,7 @@
     Nginx可以通过反向代理将用户的请求分配给多台机器处理，来实现负载均衡。  配置样例：
         ``` xml
             upstream myweb{
+                # #weigth参数表示权值，权值越高被分配到的几率越大
                 server 172.25.25.1:8080 weight=3 ;
                 server 172.25.25.2:8080;
             }

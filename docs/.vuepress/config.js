@@ -20,14 +20,13 @@ module.exports = {
 				['/java/experience', '历程'],
 				['/java/git', 'git学习'],
 				['/java/websocket', 'websocket']
+			]		
+		},{
+			title: 'sql',
+			collapsable: true,
+			children: [
+				['/sql/mysql', 'mysql'],
 			]
-			
-		// },{
-		// 	title: 'mysql数据库',
-		// 	collapsable: true,
-		// 	children: [
-		// 		['/mysql/mysqlBase', 'mysql基础'],
-		// 	]
 		// },{
 		// 	title: 'spring',
 		// 	collapsable: true,
@@ -41,6 +40,7 @@ module.exports = {
 				['/framework/elasticsearch', 'elasticsearch'],
 				['/framework/mybatis', 'mybatis'],
 				['/framework/quartz', 'quartz'],
+				['/framework/nginx', 'nginx'],
 			]
 		},{
 			title: 'linux',
@@ -77,7 +77,7 @@ module.exports = {
 		collapsable: true,
 		children: [
 			['/daily/reprintLink', '优秀文章转载'],
-			['/daily/misc', '所见所闻'],
+			['/daily/misc', '杂记'],
 		]
 		}]
 		
