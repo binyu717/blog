@@ -38,18 +38,29 @@
 [知乎链接](https://zhuanlan.zhihu.com/p/38850888)
 
 ## getResourceAsStream()了解一下
-### this.getClass().getResourceAsStream()
-    path 不以’/'开头时默认是从此类所在的包下取资源，以’/'开头则是从ClassPath根下获取。其只是通过path构造一个绝对路径，最终还是由ClassLoader获取资源。 
-### this.getClass().getClassLoader().getResourceAsStream()
-    默认则是从ClassPath根下获取，path不能以’/'开头，最终是由ClassLoader获取资源。 
+    ### this.getClass().getResourceAsStream()
+        path 不以’/'开头时默认是从此类所在的包下取资源，以’/'开头则是从ClassPath根下获取。其只是通过path构造一个绝对路径，最终还是由ClassLoader获取资源。 
+    ### this.getClass().getClassLoader().getResourceAsStream()
+        默认则是从ClassPath根下获取，path不能以’/'开头，最终是由ClassLoader获取资源。 
 
-###  
-```java
-InputStream is = this.getClass().getResourceAsStream()
-Properties prop = new Properties(is);
-prop.load()
-// 这样就可以获取文件中的数据了
-prop.getProperty("key);
+    ###  
+    ```java
+    InputStream is = this.getClass().getResourceAsStream()
+    Properties prop = new Properties(is);
+    prop.load()
+    // 这样就可以获取文件中的数据了
+    prop.getProperty("key);
 
-```
-ClassPath根路径：war包下WEB-INF/目录；不过存放在resources目录下的文件都会打包到WEB-INF下的目录
+    ```
+    ClassPath根路径：war包下WEB-INF/目录；不过存放在resources目录下的文件都会打包到WEB-INF下的目录
+
+
+## SimplePropertyPreFilter
+    ```JAVA
+        // 构造过滤器 定义需要的字段类型
+        SimplePropertyPreFilter filter = new SimplePropertyPreFilter(RoleModel.class,"id");
+        // 对象转jsonString
+        JSONObject.toJSONString(roleModel,filter);
+    ```
+
+## @Column 注解 
