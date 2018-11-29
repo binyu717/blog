@@ -70,5 +70,5 @@
 同源策略：是指协议，域名，端口都要相同，其中有一个不同都会产生跨域；
 
 ## @Transactional 踩坑
-- 默认的事务规则是遇到运行异常（RuntimeException）和程序错误（Error）才会回滚，在 @Transactional 注解中使用 rollbackFor 属性来指定异常。
+- 默认的事务规则是遇到运行异常（RuntimeException）和程序错误（Error）才会回滚，（手动抛出的Exception异常默认不会回滚），切记在 @Transactional 注解中使用 rollbackFor 属性来指定异常。
 - tycatch掉异常，不会回滚

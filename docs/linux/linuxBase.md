@@ -13,7 +13,8 @@
 > find / -user username 搜索属于用户username的文件和目录
 > find / -name *.xml 在目录 / 中搜索带有'.xml' 结尾的文件
 
-- 查看进程
+- 查看进程 ps process status (进程状态)
+> ps -auxf 显示进程状态
 > ps -a 显示所有进程 
 > ps -ef | grep java 表示查看所有进程里 CMD 是 java 的进程信息 
     - linux下通过进程名查看其占用端口

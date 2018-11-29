@@ -102,38 +102,71 @@
 - nginx -v：显示 nginx 的版本。 
 - nginx -V：显示 nginx 的版本，编译器版本和配置参数。
  
-## 例子
-### 静态HTTP服务器
-
+## 应用实例
+### HTTP服务器
+- Nginx本身也是一个静态资源的服务器，可以通过Nginx来实现动静分离
     配置样例：
         ```xml
-        server{
-                listen 80; # 端口号
-                location /{
-                    root /usr/share/nginx/html; # 静态文件路径
-                }
-        }
+             upstream test{  
+                server localhost:8080;  
+                server localhost:8081;  
+            }
+            server {  
+                listen   80;  
+                server_name  localhost;  
+                location / {  
+                    root   /usr/share/nginx/html;  
+                    index  index.html;  
+                }  
+                
+                # 所有静态请求都由nginx处理，存放目录为html  
+                location ~ .(gif|jpg|jpeg|png|bmp|swf|css|js)$ {  
+                    root /usr/share/nginx/html; # 静态文件路径  
+                }  
+            
+                # 所有动态请求都转发给tomcat处理  
+                location ~ .(jsp|do)$ {  
+                    proxy_pass  http://test;  
+                }  
+
+                error_page   500 502 503 504 /50x.html;  
+                location = /50x.html {  
+                    root   /usr/share/nginx/html;  
+                }  
+            } 
+            
         ```
 
 ### 反向代理服务器
-    客户端请求Nginx，Nginx请求应用服务器，然后将结果返回给客户端。
+- 反向代理（Reverse Proxy）方式是指以代理服务器来接受internet上的连接请求，然后将请求转发给内部网络上的服务器，并将从服务器上得到的结果返回给internet上请求连接的客户端，此时代理服务器对外就表现为一个反向代理服务器。
     配置样例：    
         ``` xml
             server{
                     listen 80; # 端口号
+                    server_name  localhost;                                               
+                    client_max_body_size 1024M;
                     location /{
-                        proxy_pass http://172.25.25.50:8080;# 应用服务器http地址
+                        proxy_pass http://localhost:8080;# 应用服务器http地址
                     }
             }
         ```
 
-### 负载均衡
-    Nginx可以通过反向代理将用户的请求分配给多台机器处理，来实现负载均衡。  配置样例：
+### 负载均衡 
+-   Nginx可以通过反向代理将用户的请求分配给多台机器处理，来实现负载均衡。Nginx目前支持自带3种负载均衡策略,例外还有fair、url_hash第三方策略
+      配置样例：
+    > 1、RR（默认）
+        ```xml
+            upstream test {
+                server localhost:8080;
+                server localhost:8081;
+            }
+        ```
+    >2、权重
         ``` xml
             upstream myweb{
                 # #weigth参数表示权值，权值越高被分配到的几率越大
-                server 172.25.25.1:8080 weight=3 ;
-                server 172.25.25.2:8080;
+                server 172.25.25.1:8080 weight=9;
+                server 172.25.25.2:8080 weight=1;
             }
             server{
                     listen 80; # 端口号
@@ -142,6 +175,14 @@
                     }
             }
         ```   
+    >3、ip_hash iphash的每个请求按访问ip的hash结果分配，这样每个访客固定访问一个后端服务器，可以解决session的问题。
+         ``` xml
+          upstream myweb{
+                ip_hash;
+                server 172.25.25.1:8080 weight=9;
+                server 172.25.25.2:8080 weight=1;
+            }
+         ```
 
 ### 虚拟主机
      多个网站部署在同一台服务器上时,两个域名解析到同一个IP地址，但是用户通过两个域名却可以打开两个完全不同的网站。
