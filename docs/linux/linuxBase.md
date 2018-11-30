@@ -41,8 +41,8 @@ TIME+   进程使用CPU总时间
 COMMAND 命令名、命令行
 
 - 磁盘空间
-> df -h 显示已经挂载的分区列表 
-
+> df -h 显示已经挂载的分区列表 （disk free）
+> du: Disk usage
 - 查看文件
 > tail -f catalina.out 
 > grep -C 20 'XXXX' catalina.out  上下文20行
