@@ -15,71 +15,69 @@ module.exports = {
 			title: 'java',
 			collapsable: true,
 			children: [
-				['/java/javaBase', 'java基础'],
+				// JAVA 知识点整理归纳
+				['/java/javaBase', 'java知识点'],
 				['/java/arithmetic', '算法'],
-				['/java/experience', '历程'],
-				['/java/git', 'git学习'],
-				['/java/websocket', 'websocket']
+				// javaMail/fastJson/guava等等，代码块
+				['/java/experience', '一些工具类的使用'],
+				['/java/websocket', 'websocket相关']
 			]		
 		},{
-			title: 'sql',
-			collapsable: true,
-			children: [
-				['/sql/mysql', 'mysql'],
-			]
-		// },{
-		// 	title: 'spring',
-		// 	collapsable: true,
-		// 	children: [
-		// 		['/spring/springBase', 'spring基础'],
-		// 	]
-		},{
-			title: '框架',
+			title: '开发周边',
 			collapsable: true,
 			children: [
 				['/framework/elasticsearch', 'elasticsearch'],
 				['/framework/mybatis', 'mybatis'],
 				['/framework/quartz', 'quartz'],
 				['/framework/nginx', 'nginx'],
+				['/framework/git', 'git'],
 			]
 		},{
-			title: 'linux',
-			collapsable: false,
+			title: '网络技术',
+			collapsable: true,
 			children: [
-				['/linux/linuxBase', '基础'],
+				['/network/networkBase', '知识点'],
+			]
+		},{
+			title: 'sql',
+			collapsable: true,
+			children: [
+				['/sql/mysql', 'mysql'],
 			]
 		},{
 			title: 'tomcat',
-			collapsable: false,
+			collapsable: true,
 			children: [
-				['/tomcat/tomcatBase', '基础'],
+				['/tomcat/tomcatBase', '知识点'],
 			]
-		// },{
-		// 	title: '开发工具',
-		// 	collapsable: false,
-		// 	children: [
-		// 		['/ide/ideBase', '基础'],
-		// 	]
 		},{
-			title: '网络技术',
-			collapsable: false,
+			title: 'linux',
+			collapsable: true,
 			children: [
-				['/network/networkBase', '基础'],
+				['/linux/linuxBase', '知识点'],
 			]
 		},{
 			title: 'docker',
-			collapsable: false,
+			collapsable: true,
 			children: [
-				['/docker/docker', '基本命令'],
+				['/docker/docker', 'docke学习'],
+				['/docker/docker_mysql', 'docke与mysql'],
 			]
-			},{
-		title: '日常',
+		},{
+			title: '面试',
+			collapsable: true,
+			children: [
+				['/interview/interviewQuestionBank', '面试题库'],
+			]
+		},{
+		title: '时光里',
 		collapsable: true,
 		children: [
-			['/daily/reprintLink', '优秀文章转载'],
+			['/daily/reprintLink', '优秀站点'],
+			// 平日里遇到的零散知识点
 			['/daily/misc', '杂记'],
 		]
 		}]
-		
+	
 	}
 }

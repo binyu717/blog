@@ -1,5 +1,7 @@
-## 参考
-[Docker — 从入门到实践](https://yeasy.gitbooks.io/docker_practice/content/)   
+## 推荐
+- [Docker — 从入门到实践](https://yeasy.gitbooks.io/docker_practice/content/)     
+- [使用 Docker 搭建 Java Web 运行环境](https://mp.weixin.qq.com/s/N_EAb776No1ATBdL4XQg-A)
+
 ## 安装docker
 ### Docker 分为 CE 和 EE 两大版本。CE 即社区版（免费，支持周期 7 个月），EE 即企业版，强调安全，付费使用，支持周期 24 个月。
 - Ubuntu 操作系统

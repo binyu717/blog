@@ -1,4 +1,5 @@
-## websocket学习
+
+## 项目中使用的一个websocket demo
 
 ### 第一步 
 - WebSocketHandler用于处理websocket的消息
@@ -111,7 +112,7 @@ public class HandshakeInterceptor extends HttpSessionHandshakeInterceptor {
     }
 ```
 
-### question
+## 当中遇到的问题
 - 根据浏览器的保护规则，跨域的时候我们创建的sessionId是不会被浏览器保存下来的,因此在开发时前后联调的时候，因为sessionId的不同，会导致发送到其他client，我们可以构建一个拦截器，对需要跨域访问的request头部重写。   
 服务端：
 ``` java

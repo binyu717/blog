@@ -1,6 +1,7 @@
-[官方文档](https://www.elastic.co/guide/cn/elasticsearch/guide/current/getting-started.html)
-[youmeek博客](http://www.youmeek.com/category/elasticsearch/)
-[参考blog](https://blog.csdn.net/ghost_leader/article/details/79023222)
+## 推荐
+- [官方文档](https://www.elastic.co/guide/cn/elasticsearch/guide/current/getting-started.html)   
+- [youmeek博客](http://www.youmeek.com/category/elasticsearch/)   
+- [参考blog](https://blog.csdn.net/ghost_leader/article/details/79023222)    
 ## 基本知识
 - Cluster：集群，可以一个或多个节点，这些节点共同保存这个集群的数据。集群有一个名称，很重要，各个节点的配置就需要用到这个名称，节点是用集群名称加入到集群中的。
 - Node：节点，归属集群。如果整个集群就一个节点，那这个节点也就是这个集群本身。

@@ -1,5 +1,5 @@
 ## 推荐
-[存储与持久化操作配置详细解析](https://yq.aliyun.com/articles/29122)
+- [存储与持久化操作配置详细解析](https://yq.aliyun.com/articles/29122)    
 ## 基本概念
 - Quartz有3个核心：调度器、任务、触发器（一个任务可以关联多个触发器，二一个触发器只能触发一个任务）
 - 当Scheduler调度JOb的时候，实际上会通过反射newInstance一个人新的Job实例，在调度完后再进行销毁，同时会把JobExecutionContext传递给Job的execute方法，Job实例通过JobExecutionContext访问到Quartz运行时的环境以及Job本身的明细数据。

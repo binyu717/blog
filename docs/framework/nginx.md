@@ -1,7 +1,8 @@
 
 ## 推荐
- [nginx中文文档](http://www.nginx.cn/doc/)
- [超详细 Nginx 极简教程](https://mp.weixin.qq.com/s/L32QRHYw9FiDJ41L0nGdTw)
+ - [nginx中文文档](http://www.nginx.cn/doc/)     
+ - [超详细 Nginx 极简教程](https://mp.weixin.qq.com/s/L32QRHYw9FiDJ41L0nGdTw)
+ - [超详细Nginx简易教程，一学就会！](https://www.cnblogs.com/jingmoxukong/p/5945200.html)
 ## 配置文件详解
 ### 文件大致结构：
         ```xml
