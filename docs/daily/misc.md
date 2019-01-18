@@ -41,5 +41,20 @@ ClassPath根路径：war包下WEB-INF/目录；不过存放在resources目录下
 - CPU及资源锁释放上，sleep,wait调用后都会暂停当前线程并让出cpu的执行时间，但不同的是sleep不会放当前持有的对   的锁资源，到时间后会继续执行，而wait会放弃所有锁并需要notify/notifyAll后重新取到对象锁资源后才能继续执行。
 - 异常捕获上，sleep需要捕获或者抛出异常，而wait/notify/notifyAll不需要。
 
+### /etc/crontab 及 /var/spool/cron/$USER 
+- 定时任务：在linux中主要有2个地方体现，一个是/etc/crontab ,另一个就是定义了任务计划的用户/var/spool/cron/$USER
+- /etc/crontab 只有root用户可以使用，使用时需root权限，而且必须指定运行用户，才会执行
+- /var/spool/cron/$USER 所有用户都可以使用，可以使用crontab -u username -e命令来直接编辑这个文件。
+-  /var/log/cron.log  cron运行日志位置
+- 格式：m h dom mon dow command   
+    - m:分钟，0-59   
+    - h:小时，0-23    
+    - dom:日期，1-31   
+    - mon:月份，1-12   
+    - dow:星期，0-6，0为星期天   
+    - command:命令   
+    
+### JAVA序列化
+ - [Java 序列化的高级认识](https://www.ibm.com/developerworks/cn/java/j-lo-serial/)
  
-      
+ 

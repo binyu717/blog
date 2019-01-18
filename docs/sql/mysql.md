@@ -77,3 +77,4 @@
     - set profiling=1; 开启profiling
     - SHOW PROFILES 获取queryId;
     - SHOW PROFILE [ALL] FOR QUERY queryId; 查询详细信息
+ 
