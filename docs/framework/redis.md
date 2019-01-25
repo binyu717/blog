@@ -11,3 +11,5 @@
 - StringRedisTemplate默认采用的是String的序列化策略，保存的key和value都是采用此策略序列化保存的。
 - RedisTemplate默认采用的是JDK的序列化策略，保存的key和value都是采用此策略序列化保存的。
 - 使用StringRedisTemplate先把对象json化，RedisTemplate则直接转换实体对象
+
+[https://www.cnblogs.com/VitoYi/p/8726070.html](https://www.cnblogs.com/VitoYi/p/8726070.html)

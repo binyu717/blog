@@ -32,11 +32,12 @@ Spring从两个角度来实现自动化装配：
     - <constructor-arg 元素
     - 使用Spring 3.0所引入的c-命名空间
 ### 三、高级装配
-#### 3.1.1配置profile bean
+#### 3.1 环境与profile
+##### 3.1.1配置profile bean
 - 在Java配置中，可以使用@Profile注解指定某个bean属于哪一个profile，它会告诉Spring这个配置类中的
 bean只有在dev profile激活时才会创建。
 - 在XML中配置profile：通过<beans>元素的profile属性，在XML中配置profile bean。
-#### 3.1.2激活profile
+##### 3.1.2激活profile
 Spring在确定哪个profile处于激活状态时，需要依赖两个独立的属
 性：spring.profiles.active和spring.profiles.default。如果设置了
 spring.profiles.active属性的话，那么它的值就会用来确定哪个profile是激活的。但
@@ -52,3 +53,7 @@ spring.profiles.default均没有设置的话，那就没有激活的profile，�
     - 作为JVM的系统属性；
     - 在集成测试类上，使用@ActiveProfiles注解设置。
 - Spring提供了@ActiveProfiles注解，我们可以使用它来指定运行测试时要激活哪个profile
+#### 3.2　条件化的bean
+#### 3.3　处理自动装配的歧义性
+- 标示首选的bean:通过@Primary来表达最喜欢的方案，@Primary能够与@Component组合用在组件扫描的bean上，
+- 限定自动装配的bean，@Qualifier注解是使用限定符的主要方式，@Qualifier("iceCream")
