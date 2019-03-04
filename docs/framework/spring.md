@@ -57,3 +57,18 @@ spring.profiles.default均没有设置的话，那就没有激活的profile，�
 #### 3.3　处理自动装配的歧义性
 - 标示首选的bean:通过@Primary来表达最喜欢的方案，@Primary能够与@Component组合用在组件扫描的bean上，
 - 限定自动装配的bean，@Qualifier注解是使用限定符的主要方式，@Qualifier("iceCream")
+#### 3.4　bean的作用域
+- Spring定义了多种作用域
+    - 单例（Singleton）：在整个应用中，只创建bean的一个实例。
+    - 原型（Prototype）：每次注入或者通过Spring应用上下文获取的时候，都会创建一个新的bean实例。
+    - 会话（Session）：在Web应用中，为每个会话创建一个bean实例。
+    - 请求（Rquest）：在Web应用中，为每个请求创建一个bean实例。
+- 单例是默认的作用域，可使用@Scope注解，它可以与@Component或@Bean一起使用
+### 四 面向切面的Spring
+- 横切关注点可以被描述为影响应用多处的功能。
+- 通知（Advice)
+    - 前置通知（Before）：在目标方法被调用之前调用通知功能；
+    - 后置通知（After）：在目标方法完成之后调用通知，此时不会关心方法的输出是什么；
+    - 返回通知（After-returning）：在目标方法成功执行之后调用通知；
+    - 异常通知（After-throwing）：在目标方法抛出异常后调用通知；
+    - 环绕通知（Around）：通知包裹了被通知的方法，在被通知的方法调用之前和调用之后执行自定义的行为

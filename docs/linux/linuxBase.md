@@ -1,3 +1,5 @@
+## 推荐
+[Linux工具快速教程](https://linuxtools-rst.readthedocs.io/zh_CN/latest/base/04_disk.html)
 ## 常用命令
 ### 查看文件
 - ll  显示当前目录下文件详细信息。 

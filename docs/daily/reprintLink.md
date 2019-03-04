@@ -4,5 +4,5 @@
 
 ## GitHub
 - [crossoverjie's blog](https://crossoverjie.top/categories/)
-- [linux各软件安装教程](https://github.com/judasn/Linux-Tutorial/)
+- [judasn.github](https://github.com/judasn)
 - [Interview-Notebook](https://cyc2018.github.io/CS-Notes/#/)
