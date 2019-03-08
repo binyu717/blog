@@ -31,6 +31,9 @@ module.exports = {
 				['/framework/quartz', 'quartz'],
 				['/framework/nginx', 'nginx'],
 				['/framework/git', 'git'],
+				['/framework/redis', 'redis'],
+				['/framework/spring', 'spring'],
+
 			]
 		},{
 			title: '网络技术',
@@ -60,8 +63,8 @@ module.exports = {
 			title: 'docker',
 			collapsable: true,
 			children: [
-				['/docker/docker', 'docke学习'],
-				['/docker/docker_mysql', 'docke与mysql'],
+				['/docker/docker', 'docker学习'],
+				['/docker/docker_others', 'docker与其他'],
 			]
 		},{
 			title: '面试',
