@@ -56,5 +56,8 @@ ClassPath根路径：war包下WEB-INF/目录；不过存放在resources目录下
     
 ### JAVA序列化
  - [Java 序列化的高级认识](https://www.ibm.com/developerworks/cn/java/j-lo-serial/)
+
+ ### 数据库时间正常，接口返回时间慢8小时问题
+ - bin/catalina.sh 文件首行加上 JAVA_OPTS="-Duser.timezone=GMT+08"
  
  
