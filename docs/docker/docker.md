@@ -53,7 +53,7 @@
     >docker restart container_name/container_id  
     >docker rm container_name/container_id
 - 进入容器 
-    >  docker exec -it container_name/container_id bash
+    > docker exec -it container_name/container_id bash    
     > docker exec -it container_name/container_id /bin/bash 
 - 复制文件到容器中
     > docker cp src_path container:dest_path
@@ -63,3 +63,14 @@
     > docker logs -f --tail 行数 容器名  
     -f : 查看实时日志  
     -t : 查看日志产生的日期
+
+## dockerfile详解
+### Dockerfile介绍
+- Dockerfile是一个包含用于组合映像的命令的文本文档，其内包含了一条条的指令(Instruction)，每一条指令构建一层，因此每一条指令的内容，就是描述该层应当如何构建。
+- Dockerfile 一般分为四部分：基础镜像信息、维护者信息、镜像操作指令和容器启动时执行指令
+- Docker以从上到下的顺序运行Dockerfile的指令。为了指定基本映像，第一条指令必须是FROM。一个声明以＃字符开头则被视为注释。可以在Docker文件中使用RUN，CMD，FROM，EXPOSE，ENV等指令。
+### 常用指令
+- FROM：指定基础镜像，必须为第一个命令。Docker 还存在一个特殊的镜像，名为 scratch。这个镜像是虚拟的概念，并不实际存在，它表示一个空白的镜像。
+- RUN： 执行命令，其格式有两种：
+    - shell 格式：RUN <命令>，就像直接在命令行中输入的命令一样。刚才写的 Dockerfile 中的 RUN 指令就是这种格式。
+    - exec 格式：RUN ["可执行文件", "参数1", "参数2"]，这更像是函数调用中的格式。

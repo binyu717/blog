@@ -60,4 +60,55 @@ ClassPath根路径：war包下WEB-INF/目录；不过存放在resources目录下
  ### 数据库时间正常，接口返回时间慢8小时问题
  - bin/catalina.sh 文件首行加上 JAVA_OPTS="-Duser.timezone=GMT+08"
  
- 
+ ### Java反射获取对象成员属性，getFields()与getDeclaredFields()方法的区别
+ - getFields()  获取某个类的所有的public字段，其中是包括父类的public字段的。
+ - getDeclaredFields()：获取某个类的自身的所有字段，不包括父类的字段。对于私有的成员变量来说，要操作其属性值的话，就需要设置setAccessible(true);
+ - so，若要获取父类的所有字段，则通过this.getClass().getSupperClass().getDeclaredFields()
+
+ ### SpringBoot使用EnableWebMvc无法加载静态页面的问题解决
+ - 事情缘由：项目新增一个解决Long类型数据json序列化时丢失精度config，类上注解@EnableWebMvc、@Configuration，启动发现swagger的页面无法访问了。
+ - 那加EnableWebMvc与不加的区别到底在哪？
+    - 当使用EnableWebMvc时，加载的是WebMvcConfigurationSupport中的配置项。
+    - 当不使用EnableWebMvc时，使用的是WebMvcAutoConfiguration引入的配置项。
+- 注意说明
+    - Spring Boot 默认提供Spring MVC 自动配置，不需要使用@EnableWebMvc注解
+    - 如果需要配置MVC（拦截器、格式化、视图等） 请使用添加@Configuration并实现WebMvcConfigurer接口，或是继承WebMvcConfigurationSupport类，不要添加@EnableWebMvc注解。
+    - @EnableWebMvc 只能添加到一个@Configuration配置类上，用于导入Spring Web MVC configuration
+- 解决方法
+    - 继承WebMvcConfigurationSupport类，添加@Configuration，重写configureMessageConverters解决Long精度问题
+
+### mapstruct编译报 Ambiguous mapping methods found for mapping collection element
+- 业务需求需要自定义转化方法，代码如下：
+```java
+@Mapper(componentModel = "spring")
+public abstract class MyConvertor {
+
+    public abstract MyVO dtoToVO(MyDTO myDTO);
+
+    public abstract List<MyVO> dtosToVOS(List<MyDTO> myDTOList);
+
+    public MyVO dtoToDetailVO(MyDTO myDTO) {
+        MyVO myVO = dtoToVO(myDTO);
+        ···自定义逻辑···
+        return myVO;
+    }
+}
+```
+- 在编译时，会重写dtoToVO、dtosToVOS方法；dtoToDetailVO已在抽象类实现；而mapstruct在重写集合之间转化时，实际是循环调用一对一转化方法；而此时通过入参和出参会发现存在两个方法；因此会报"Ambiguous mapping methods"；   
+- 解决方法：自己去实现集合转化方法
+```java
+    public List<MyVO> dtosToVOS(List<MyDTO> myDTOList){
+        if ( myDTOList == null ) {
+            return null;
+        }
+        List<MyVO> list = new ArrayList<>( myDTOList.size() );
+        for ( MyDTO myDTO : myDTOList ) {
+            list.add( dtoToVO( myDTO ) );
+        }
+        return list;
+    }
+```
+### springBoot 时间格式转换问题
+- @RequestBody 修饰，DATE类型会json序列转化，jackson默认 yyyy-MM-ddTHH:mm:ss格式 前端需要以该格式传参，
+    @DateTimeFormat注解不起作用，可以使用@JsonFormat来指定格式，也可配置统一的序列转换器
+- @RequertParam 修饰，可以加@DateTimeFormat注解指定DATE接收格式
