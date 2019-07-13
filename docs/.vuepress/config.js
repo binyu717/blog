@@ -33,7 +33,8 @@ module.exports = {
 				['/framework/git', 'git'],
 				['/framework/redis', 'redis'],
 				['/framework/spring', 'spring'],
-
+				['/framework/oauth2.0', 'oauth2.0'],
+				['/framework/mock', 'mock'],
 			]
 		},{
 			title: '网络技术',
