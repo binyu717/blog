@@ -63,7 +63,7 @@
     > docker logs -f --tail 行数 容器名  
     -f : 查看实时日志  
     -t : 查看日志产生的日期
-
+ 
 ## dockerfile详解
 ### Dockerfile介绍
 - Dockerfile是一个包含用于组合映像的命令的文本文档，其内包含了一条条的指令(Instruction)，每一条指令构建一层，因此每一条指令的内容，就是描述该层应当如何构建。

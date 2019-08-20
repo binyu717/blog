@@ -68,6 +68,21 @@ $ git checkout dev
     >$ git stash clear
 - 从堆栈中删除最新的stash,同样可以指定 stash ID 
     >$ git stash drop
+
+## git tag 
+- 查看所有标签
+    > git tag
+- 查看标签详情
+    > git show <tagname>
+- 创建标签
+    > git tag -a <tagname> -m"" <commitId>
+- 推送至远程
+    > git push origin <tagname>
+- 删除本地标签
+    > git tag -d <tagname>
+- 删除远程标签（只会删除远程，本地保留）
+    > git push origin :refs/tags/<tagname>
+    
 ## 远程仓库
 - 更换远程仓库地址，URL为新地址
     >git remote set-url origin URL

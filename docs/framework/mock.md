@@ -36,6 +36,23 @@
     - .andExpect(jsonPath("$.data.name", is("优惠券"))))  
     - .andExpect(jsonPath("$.data.id", notNullValue()))
     
+#### 代码demo
+```java
+
+  @Test
+    public void testFindByCouponCode() throws Exception{
+        getResultAction(RequestMethod.GET, MediaType.APPLICATION_JSON, null, "/coupon/{couponCode}", "1")
+                
+                .andExpect(jsonPath("$.success", is(true)))
+                .andExpect(jsonPath("$.data.couponName").value("已启用优惠券"))
+                .andExpect(jsonPath("$.data.id",notNullValue()));// 判断id是否为Null
+                // list类型返回值
+                .andExpect(jsonPath("$.data", hasSize(1)) // 判断list大小
+                .andExpect(jsonPath("$.data").isArray()) // 判断是否list
+                .andExpect(jsonPath("$.data[0].id").value(1L)) //判断第一条数据id是否为1
+
+    }
+```
 #### 创建单元测试基类
 ```java
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -68,14 +85,16 @@ public class BaseTest {
     }
 
     /**
-     * @param method 请求方式
-     * @param contentType 内容类型
-     * @param contentObject 发送json数据格式时的请求参数对象
-     * @param urlTemplate 请求路由
-     * @param urlVariables 请求参数
+     * @param method        请求方式
+     * @param contentType   内容类型
+     * @param urlTemplate   请求路由
+     * @param contentObject @RequestBody 参数对象
+     * @param param @requestParam  传参
+     * @param urlVariables  @PathVariable请求参数
      * @return
      */
-    protected ResultActions getResultAction(RequestMethod method, MediaType contentType, Object contentObject, String urlTemplate, Object... urlVariables) {
+    protected ResultActions getResultAction(RequestMethod method, MediaType contentType, String urlTemplate, Object contentObject,
+                                            Map<String, String> param, Object... urlVariables) {
         MockHttpServletRequestBuilder builder;
         switch (method) {
             case GET:
@@ -96,6 +115,11 @@ public class BaseTest {
         if (contentObject != null) {
             builder.contentType(contentType).content(JSONObject.toJSONString(contentObject));
         }
+        if (MapUtils.isNotEmpty(param)) {
+            for (Map.Entry<String, String> entry : param.entrySet()) {
+                builder.param(entry.getKey(), entry.getValue());
+            }
+        }
         try {
             return mockMvc.perform(builder).andExpect(status().isOk());
         } catch (Exception e) {
@@ -105,3 +129,9 @@ public class BaseTest {
 }
 ```
 
+#### 注意事项
+- @RequestBody修饰的参数，对象转成String后 build.content(jsonString)
+- @ReuestParam修饰的参数，不管定义的是什么类型，都是传String类型进去；builder.param()参数类型会自动转换。
+    - 接口定义@RequestParam(value = "ids") List<Long> ids  -> builder.param("ids","1,2,3")
+    - 接口定义@RequestParam(value = "id") Long id  -> builder.param("id","1")
+- @PathVariable修饰的参数，直接加在get方法上，MockMvcRequestBuilders.get(urlTemplate, urlVariables)

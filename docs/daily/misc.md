@@ -112,3 +112,14 @@ public abstract class MyConvertor {
 - @RequestBody 修饰，DATE类型会json序列转化，jackson默认 yyyy-MM-ddTHH:mm:ss格式 前端需要以该格式传参，
     @DateTimeFormat注解不起作用，可以使用@JsonFormat来指定格式，也可配置统一的序列转换器
 - @RequertParam 修饰，可以加@DateTimeFormat注解指定DATE接收格式
+
+### fastjson JSONObject.toJSONString 出现 $ref: "$."的解决办法（重复引用：两个属性的值是同一个对象地址）
+- 为了避免StackOverflowError异常，fastjson会对引用进行检测，如果检测到存在重复/循环引用的情况，fastjson默认会以“引用标识”代替同一对象，而非继续循环解析导致StackOverflowError。
+- 解决方法
+    - 关闭检查: JSON.toJSONString(object, SerializerFeature.DisableCircularReferenceDetect);
+    - 使用Gson
+    ```java
+        Gson gson = new Gson();
+        String s = gson.toJson(obj);
+    ```
+    - 创建新对象 不循环引用
