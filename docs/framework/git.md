@@ -75,13 +75,13 @@ $ git checkout dev
 - 查看标签详情
     > git show <tagname>
 - 创建标签
-    > git tag -a <tagname> -m"" <commitId>
+    > git tag -a `<tagname>` -m"" `<commitId>`
 - 推送至远程
-    > git push origin <tagname>
+    > git push origin `<tagname>`
 - 删除本地标签
-    > git tag -d <tagname>
+    > git tag -d `<tagname>`
 - 删除远程标签（只会删除远程，本地保留）
-    > git push origin :refs/tags/<tagname>
+    > git push origin :refs/tags/`<tagname>`
     
 ## 远程仓库
 - 更换远程仓库地址，URL为新地址
@@ -90,6 +90,17 @@ $ git checkout dev
     >git remote rm origin
 - 添加新远程仓库
     >git remote add origin url
+## reset和revert
+### reset 回退到指定的commit
+ ```
+ --soft 回退后a分支修改的代码被保留并标记为add的状态（git status 是绿色的状态）
+ --mixed 重置索引，但不重置工作树，更改后的文件标记为未提交（add）的状态。默认操作。
+ --hard 重置索引和工作树，并且a分支修改的所有文件和中间的提交，没提交的代码都被丢弃了。
+ --merge 和--hard类似，只不过如果在执行reset命令之前你有改动一些文件并且未提交，merge会保留你的这些修改，hard则不会。【注：如果你的这些修改add过或commit过，merge和hard都将删除你的提交】
+ --keep 和--hard类似，执行reset之前改动文件如果是a分支修改了的，会提示你修改了相同的文件，不能合并。如果不是a分支修改的文件，会移除缓存区。git status还是可以看到保持了这些修改。
+
+ ``` 
+### revert 用一次新的commit来中和指定的commit（不影响该commit后的代码）
  ## 项目实践
  - 版本切换
 >HEAD指向的版本就是当前版本，因此，Git允许我们在版本的历史之间穿梭，使用命令   

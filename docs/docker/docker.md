@@ -52,6 +52,7 @@
     >docker stop container_name/container_id    
     >docker restart container_name/container_id  
     >docker rm container_name/container_id
+    >docker rmi 强制删除
 - 进入容器 
     > docker exec -it container_name/container_id bash    
     > docker exec -it container_name/container_id /bin/bash 
@@ -63,6 +64,18 @@
     > docker logs -f --tail 行数 容器名  
     -f : 查看实时日志  
     -t : 查看日志产生的日期
+    --tail : 只显示最新n条容器日志
+    --since : 显示某个开始时间的所有日志
+- 显示指定容器的端口映射
+    > docker port
+- 容器与物理主机之间拷贝文件
+    > docker cp    
+   - docker cp /home/index.html contain-id:/etc/     
+    将物理机的home/index.html 拷贝到contain-id容器的etc/目录下       
+   - docler cp /home/index.html contain-id:/etc/index-back.html       
+    将物理机的home/index.html 拷贝到contain-id容器的etc/目录下 改名为index-back.html       
+   - docler cp contain-id:/etc/index.html  /home/    
+    拷贝容器contain-id:/etc/index.html到物理机中的/home/目录下
  
 ## dockerfile详解
 ### Dockerfile介绍

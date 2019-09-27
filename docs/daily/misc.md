@@ -123,3 +123,7 @@ public abstract class MyConvertor {
         String s = gson.toJson(obj);
     ```
     - 创建新对象 不循环引用
+
+### @Transactional导致的bug
+- 描述：项目包一开始在开发环境配置了dev环境的数据源信息，后来这部分功能没上，但配置信息一直没删除，后来上sit、uat都正常，后来在一次dev环境数据源地址改了后，sit、uat环境一直报数据库连接失败（一部分接口正常调用，一部分接口就一直报错，而且首次调用这部分接口时，后台日志就一直刷datasource init error）。
+- 原因：有同学在一些接口上加了@Transactional注解（该包都是远程调用服务，加事务管理是脑子锈了吧），该注解会初始化数据源，后来数据库地址改了，导致一直重试-报错。
