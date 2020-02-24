@@ -16,8 +16,8 @@ module.exports = {
 			collapsable: true,
 			children: [
 				// JAVA 知识点整理归纳
-				['/java/javaBase', 'java知识点'],
-				['/java/arithmetic', '算法'],
+				['/java/designPattern', '设计模式笔记'],
+				['/java/readingNotes', '算法'],
 				// javaMail/fastJson/guava等等，代码块
 				['/java/experience', '一些工具类的使用'],
 				['/java/websocket', 'websocket相关']
@@ -74,13 +74,13 @@ module.exports = {
 				['/interview/interviewQuestionBank', '面试题库'],
 			]
 		},{
-		title: '时光里',
-		collapsable: true,
-		children: [
-			['/daily/reprintLink', '优秀站点'],
-			// 平日里遇到的零散知识点
-			['/daily/misc', '杂记'],
-		]
+			title: '时光里',
+			collapsable: true,
+			children: [
+				['/daily/reprintLink', '优秀站点'],
+				// 平日里遇到的零散知识点
+				['/daily/misc', '杂记'],
+			]
 		}]
 	
 	}
