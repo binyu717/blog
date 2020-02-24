@@ -51,8 +51,9 @@
 ```
 ## 参数校验
 - 字段校验：可以直接修饰在字段上
-- model校验： @Validated修饰在对象上，可以指定分组
-- 级联校验：对象里的对象用@valid修饰，则可以校验下一层对象的属性
+- 对象校验： @Validated修饰在对象上，可以指定分组
+- 对象级联校验：对象里的对象用@valid修饰，则可以校验下一层对象的属性
+- 分组校验：新建group类，根据需要是否继承Default类。
 ```java
 @RestController()
 @RequestMapping("user")
