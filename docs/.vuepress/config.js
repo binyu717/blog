@@ -15,15 +15,32 @@ module.exports = {
 			title: 'java',
 			collapsable: true,
 			children: [
-				// JAVA 知识点整理归纳
-				['/java/designPattern', '设计模式笔记'],
-				['/java/readingNotes', '算法'],
 				// javaMail/fastJson/guava等等，代码块
-				['/java/experience', '一些工具类的使用'],
-				['/java/websocket', 'websocket相关']
+				['/java/javaMail', 'java mail的使用'],
+				['/java/websocket', 'websocket相关'],
+				['/java/tomcat', 'tomcat记录'],
+				['/java/hibernate-validation','validation记录']
 			]		
 		},{
-			title: '开发周边',
+			title: '算法',
+			collapsable: true,
+			children: [
+			]		
+		},{
+			title: '设计模式',
+			collapsable: true,
+			children: [
+				['/pattern/designPattern', '设计模式笔记'],
+			]		
+		},{
+			title: '数据库',
+			collapsable: true,
+			children: [
+				['/database/mysql', 'mysql'],
+				['/database/redis', 'redis'],
+			]
+		},{
+			title: '框架、组件',
 			collapsable: true,
 			children: [
 				['/framework/elasticsearch', 'elasticsearch'],
@@ -31,28 +48,10 @@ module.exports = {
 				['/framework/quartz', 'quartz'],
 				['/framework/nginx', 'nginx'],
 				['/framework/git', 'git'],
-				['/framework/redis', 'redis'],
 				['/framework/spring', 'spring'],
 				['/framework/oauth2.0', 'oauth2.0'],
 				['/framework/mock', 'mock'],
-			]
-		},{
-			title: '网络技术',
-			collapsable: true,
-			children: [
-				['/network/networkBase', '知识点'],
-			]
-		},{
-			title: 'sql',
-			collapsable: true,
-			children: [
-				['/sql/mysql', 'mysql'],
-			]
-		},{
-			title: 'tomcat',
-			collapsable: true,
-			children: [
-				['/tomcat/tomcatBase', '知识点'],
+				['/framework/dubbo', 'dubbo'],
 			]
 		},{
 			title: 'linux',
@@ -68,18 +67,30 @@ module.exports = {
 				['/docker/docker_others', 'docker与其他'],
 			]
 		},{
+			title: '网络技术',
+			collapsable: true,
+			children: [
+				['/network/networkBase', '相关文章'],
+			]
+		},{
 			title: '面试',
 			collapsable: true,
 			children: [
 				['/interview/interviewQuestionBank', '面试题库'],
 			]
 		},{
-			title: '时光里',
+			title: '阅读',
 			collapsable: true,
 			children: [
-				['/daily/reprintLink', '优秀站点'],
+				['/read/reprintLink', '书签'],
+			]
+		},{
+			title: '零散笔记',
+			collapsable: true,
+			children: [
 				// 平日里遇到的零散知识点
-				['/daily/misc', '杂记'],
+				['/note/misc', '杂记'],
+				['/note/bat', 'bat'],
 			]
 		}]
 	

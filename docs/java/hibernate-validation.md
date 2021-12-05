@@ -1,14 +1,3 @@
-## 使用Spring Validation 完成后端数据校验
-
-## 使用方法
-## 校验模式
-## 参数校验
-- 字段校验
-- 对象校验
-- 对象级联校验
-- 分组校验
-## 自定义验证器
-
 ## 一、使用方法
 ### 引入依赖
 ```xml
@@ -25,7 +14,7 @@
 ```
 - spring-boot-starter-web已包含上述两个依赖，即若是springBoot应，只需要引入spring-boot-starter-web依赖即可。
 
-## 校验模式
+## 二、校验模式
 ### 1、普通模式（默认是这个模式）
     普通模式(会校验完所有的属性，然后返回所有的验证失败信息)
 ### 2、快速失败返回模式    
@@ -45,11 +34,7 @@
         }
     }
 ```
-## 统一异常处理
-```java
-
-```
-## 参数校验
+## 三、参数校验
 - 字段校验：可以直接修饰在字段上
 - 对象校验： @Validated修饰在对象上，可以指定分组
 - 对象级联校验：对象里的对象用@valid修饰，则可以校验下一层对象的属性
@@ -124,7 +109,7 @@ public class AddressParam {
 }
 ```
 
-## 自定义验证器
+## 四、自定义验证器
 ### 1.定义注解类
 ```java
 @Constraint(validatedBy = {IntegerRangeValidator.class})
@@ -163,7 +148,7 @@ public class IntegerRangeValidator implements ConstraintValidator<IntegerRange, 
     }
 }
 ```
-## Validation相关注解含义
+## 五、Validation相关注解含义
 - @Null 限制只能为null
 - @NotNull 限制必须不为null
 - @AssertFalse 限制必须为false

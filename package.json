@@ -24,5 +24,8 @@
     "url": "https://github.com/binyu717/blog/issues"
   },
   "homepage": "https://github.com/binyu717/blog#readme",
-  "index":"https://binyu717.github.io/blog/"
+  "index": "https://binyu717.github.io/blog/",
+  "devDependencies": {
+    "vuepress": "^1.8.2"
+  }
 }

@@ -7,3 +7,4 @@ dist/
 .project
 .vscode
 .nuxt
+package-lock.json
