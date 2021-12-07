@@ -60,10 +60,18 @@ module.exports = {
 				['/linux/linuxBase', '知识点'],
 			]
 		},{
+			title: 'windows',
+			collapsable: true,
+			children: [
+				['/windows/bat', 'bat'],
+				['/windows/wsl', 'wsl'],
+			]
+		},{
 			title: 'docker',
 			collapsable: true,
 			children: [
 				['/docker/docker', 'docker学习'],
+				['/docker/docker_windows', 'windows下使用docker'],
 				['/docker/docker_others', 'docker与其他'],
 			]
 		},{
@@ -89,8 +97,7 @@ module.exports = {
 			collapsable: true,
 			children: [
 				// 平日里遇到的零散知识点
-				['/note/misc', '杂记'],
-				['/note/bat', 'bat'],
+				['/note/misc', '杂记']
 			]
 		}]
 	

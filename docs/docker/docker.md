@@ -72,10 +72,12 @@
     > docker cp    
    - docker cp /home/index.html contain-id:/etc/     
     将物理机的home/index.html 拷贝到contain-id容器的etc/目录下       
-   - docler cp /home/index.html contain-id:/etc/index-back.html       
+   - docker cp /home/index.html contain-id:/etc/index-back.html       
     将物理机的home/index.html 拷贝到contain-id容器的etc/目录下 改名为index-back.html       
-   - docler cp contain-id:/etc/index.html  /home/    
+   - docker cp contain-id:/etc/index.html  /home/    
     拷贝容器contain-id:/etc/index.html到物理机中的/home/目录下
+- 查看已下载的Docker镜像latest具体版本
+    > docker image inspect (docker image名称):latest|grep -i version
  
 ## dockerfile详解
 ### Dockerfile介绍
