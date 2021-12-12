@@ -65,6 +65,7 @@ module.exports = {
 			children: [
 				['/windows/bat', 'bat'],
 				['/windows/wsl', 'wsl'],
+				['/windows/command', '使用记录'],
 			]
 		},{
 			title: 'docker',
@@ -96,8 +97,13 @@ module.exports = {
 			title: '零散笔记',
 			collapsable: true,
 			children: [
-				// 平日里遇到的零散知识点
 				['/note/misc', '杂记']
+			]
+		},{
+			title: '工具',
+			collapsable: true,
+			children: [
+				['/tool/idea-template', 'idea注释模板']
 			]
 		}]
 	
