@@ -11,7 +11,7 @@
 ### 安装windows版docker
 - [官网下载安装docker desktop for windows版](https://www.docker.com/)
 - 启动Docker Desktop,setting->General下勾选Use the WSL 2 based engine
-![avatar](/resource/docker_setting1.png)
+![avatar](../.vuepress/public/resource/docker_setting1.png)
 - 申请[阿里云镜像地址](https://cr.console.aliyun.com/)，setting->Docker Engine,补充镜像源地址
 
 
