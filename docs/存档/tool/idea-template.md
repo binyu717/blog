@@ -1,4 +1,4 @@
-## 类模板
+<!-- ## 类模板
 ### 新增类方法注释模板
 ![avatar](../.vuepress/public/resource/idea-template1.png)
 示例：
@@ -33,4 +33,4 @@ $param$
 ![avatar](../.vuepress/public/resource/idea-template6.png)
 ```
 groovyScript("def result=''; def params=\"${_1}\".replaceAll('[\\\\[|\\\\]|\\\\s]', '').split(',').toList(); for(i = 0; i < params.size(); i++) {result+=' * @param ' + params[i] + ((i < params.size() - 1) ? '\\n' : '')}; return result", methodParameters())
-```
+``` -->

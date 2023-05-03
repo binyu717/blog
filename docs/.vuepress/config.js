@@ -15,97 +15,117 @@ module.exports = {
 			title: 'java',
 			collapsable: true,
 			children: [
-				// javaMail/fastJson/guava等等，代码块
-				['/java/javaMail', 'java mail的使用'],
-				['/java/websocket', 'websocket相关'],
-				['/java/tomcat', 'tomcat记录'],
-				['/java/hibernate-validation','validation记录']
+				// ['/java/javaMail', 'java mail的使用']
 			]		
 		},{
-			title: '算法',
+			title: 'mysql',
 			collapsable: true,
 			children: [
 			]		
 		},{
-			title: '设计模式',
+			title: 'oracle',
 			collapsable: true,
 			children: [
-				['/pattern/designPattern', '设计模式笔记'],
+				// ['/pattern/designPattern', '设计模式笔记'],
 			]		
 		},{
-			title: '数据库',
+			title: 'postgresql',
 			collapsable: true,
 			children: [
-				['/database/mysql', 'mysql'],
-				['/database/redis', 'redis'],
+				// ['/database/mysql', 'mysql'],
+				// ['/database/redis', 'redis'],
 			]
 		},{
-			title: '框架、组件',
+			title: 'redis',
 			collapsable: true,
 			children: [
-				['/framework/elasticsearch', 'elasticsearch'],
-				['/framework/mybatis', 'mybatis'],
-				['/framework/quartz', 'quartz'],
-				['/framework/nginx', 'nginx'],
-				['/framework/git', 'git'],
-				['/framework/spring', 'spring'],
-				['/framework/oauth2.0', 'oauth2.0'],
-				['/framework/mock', 'mock'],
-				['/framework/dubbo', 'dubbo'],
+			]
+		},{
+			title: 'web',
+			collapsable: true,
+			children: [
+				// ['/linux/linuxBase', '知识点'],
+			]
+		},{
+			title: 'mybatis',
+			collapsable: true,
+			children: [
+				// ['/linux/linuxBase', '知识点'],
+			]
+		},{
+			title: 'maven',
+			collapsable: true,
+			children: [
+				// ['/linux/linuxBase', '知识点'],
+			]
+		},{
+			title: 'git',
+			collapsable: true,
+			children: [
+				// ['/linux/linuxBase', '知识点'],
+			]
+		},{
+			title: 'nginx',
+			collapsable: true,
+			children: [
+				// ['/linux/linuxBase', '知识点'],
 			]
 		},{
 			title: 'linux',
 			collapsable: true,
 			children: [
-				['/linux/linuxBase', '知识点'],
+				['/linux/基本命令', '基本命令'],
 			]
 		},{
 			title: 'windows',
 			collapsable: true,
 			children: [
-				['/windows/bat', 'bat'],
-				['/windows/wsl', 'wsl'],
-				['/windows/command', '使用记录'],
+				// ['/linux/linuxBase', '知识点'],
 			]
 		},{
 			title: 'docker',
 			collapsable: true,
 			children: [
-				['/docker/docker', 'docker学习'],
-				['/docker/docker_windows', 'windows下使用docker'],
-				['/docker/docker_others', 'docker与其他'],
+				// ['/linux/linuxBase', '知识点'],
 			]
 		},{
-			title: '网络技术',
+			title: '单元测试',
 			collapsable: true,
 			children: [
-				['/network/networkBase', '相关文章'],
+				// ['/unit/linuxBase', '知识点'],
 			]
 		},{
-			title: '面试',
+			title: '问题积累',
 			collapsable: true,
 			children: [
-				['/interview/interviewQuestionBank', '面试题库'],
+				// ['/question/bat', 'bat']
 			]
 		},{
-			title: '阅读',
+			title: '设计模式',
 			collapsable: true,
 			children: [
-				['/read/reprintLink', '书签'],
-			]
-		},{
-			title: '零散笔记',
-			collapsable: true,
-			children: [
-				['/note/misc', '杂记']
+				// ['/patternDesign/docker', 'docker学习']
 			]
 		},{
 			title: '工具',
 			collapsable: true,
 			children: [
-				['/tool/idea-template', 'idea注释模板']
+				// ['/tool/networkBase', '相关文章'],
 			]
-		}]
+		},{
+			title: '面试',
+			collapsable: true,
+			children: [
+				// ['/interview/interviewQuestionBank', '面试题库'],
+			]
+		},{
+			title: '读书笔记',
+			collapsable: true,
+			children: [
+				// ['/read/reprintLink', '书签'],
+			]
+		}
+	]
 	
 	}
 }

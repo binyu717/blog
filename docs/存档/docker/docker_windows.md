@@ -1,4 +1,4 @@
-## 安装Docker
+<!-- ## 安装Docker
 ### 环境准备
 #### 打开Windows的 Hyper-V功能
 - 依次选择 控制面板->程序-> 启动或关闭Windows功能，然后勾选Hyper-V选项
@@ -21,4 +21,4 @@
 > docker run -p 3306:3306 --name MySQL -e MYSQL_ROOT_PASSWORD=root -d mysql:latest --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci
 
 ### redis
-> docker run -itd --name redis -p 6379:6379 redis
+> docker run -itd --name redis -p 6379:6379 redis -->
